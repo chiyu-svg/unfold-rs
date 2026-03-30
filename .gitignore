@@ -1,0 +1,31 @@
+# Rust 编译产物
+/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo.lock（库项目通常忽略，二进制项目可保留）
+# Cargo.lock
+
+# IDE 和编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 环境变量和敏感文件
+.env
+.env.*
+
+# unfold-rs 运行时生成的日志
+unfold_log.json
+
+# 构建脚本产物
+*.d
+# 构建脚本
+./step.md
