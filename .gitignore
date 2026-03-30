@@ -28,4 +28,4 @@ unfold_log.json
 # 构建脚本产物
 *.d
 # 构建脚本
-./step.md
+step.md
