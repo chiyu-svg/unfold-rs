@@ -107,6 +107,3 @@ unfold-rs/
 - [serde_json](https://crates.io/crates/serde_json) - JSON 处理
 - [walkdir](https://crates.io/crates/walkdir) - 目录遍历
 
-## 许可证
-
-[MIT](LICENSE)
