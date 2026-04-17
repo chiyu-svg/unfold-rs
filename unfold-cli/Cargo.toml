@@ -1,0 +1,13 @@
+[package]
+name = "unfold-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "unfold-rs"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+unfold-core = { path = "../unfold-core" }

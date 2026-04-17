@@ -1,9 +1,16 @@
-[package]
-name = "unfold-rs"
-version = "0.1.0"
-edition = "2024"
+[workspace]
+members = [
+    "unfold-core",
+    "unfold-cli",
+    "unfold-gui/src-tauri"
+]
+resolver = "2"
 
-[dependencies]
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
 anyhow = "1.0.102"
 chrono = "0.4.44"
 clap = { version = "4.6.0", features = ["derive"] }
