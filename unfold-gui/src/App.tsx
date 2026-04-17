@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
+import { open } from '@tauri-apps/plugin-dialog';
 import './App.css';
 
 interface LogEntry {
@@ -20,6 +21,42 @@ function App() {
 
   const addLog = (message: string, type: LogEntry['type'] = 'info') => {
     setLogs((prev) => [...prev, { message, type, timestamp: new Date() }]);
+  };
+
+  // 选择源目录
+  const handleSelectSource = async () => {
+    try {
+      const selected = await open({
+        directory: true,
+        multiple: false,
+        title: '选择源目录',
+      });
+      
+      if (selected && typeof selected === 'string') {
+        setSourceDir(selected);
+        addLog(`已选择源目录: ${selected}`, 'info');
+      }
+    } catch (error) {
+      addLog(`选择目录失败: ${String(error)}`, 'error');
+    }
+  };
+
+  // 选择目标目录
+  const handleSelectTarget = async () => {
+    try {
+      const selected = await open({
+        directory: true,
+        multiple: false,
+        title: '选择目标目录',
+      });
+      
+      if (selected && typeof selected === 'string') {
+        setTargetDir(selected);
+        addLog(`已选择目标目录: ${selected}`, 'info');
+      }
+    } catch (error) {
+      addLog(`选择目录失败: ${String(error)}`, 'error');
+    }
   };
 
   const handleExecute = async () => {
@@ -87,24 +124,46 @@ function App() {
       <div className="form">
         <div className="form-group">
           <label htmlFor="source">源目录</label>
-          <input
-            id="source"
-            type="text"
-            value={sourceDir}
-            onChange={(e) => setSourceDir(e.target.value)}
-            placeholder="输入源目录路径，例如: C:\Documents\Source"
-          />
+          <div className="input-with-button">
+            <input
+              id="source"
+              type="text"
+              value={sourceDir}
+              onChange={(e) => setSourceDir(e.target.value)}
+              placeholder="点击浏览按钮选择源目录"
+              readOnly={false}
+            />
+            <button
+              type="button"
+              className="button button-small"
+              onClick={handleSelectSource}
+              disabled={isExecuting}
+            >
+              📁 浏览
+            </button>
+          </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="target">目标目录</label>
-          <input
-            id="target"
-            type="text"
-            value={targetDir}
-            onChange={(e) => setTargetDir(e.target.value)}
-            placeholder="输入目标目录路径，例如: C:\Documents\Flattened"
-          />
+          <div className="input-with-button">
+            <input
+              id="target"
+              type="text"
+              value={targetDir}
+              onChange={(e) => setTargetDir(e.target.value)}
+              placeholder="点击浏览按钮选择目标目录"
+              readOnly={false}
+            />
+            <button
+              type="button"
+              className="button button-small"
+              onClick={handleSelectTarget}
+              disabled={isExecuting}
+            >
+              📁 浏览
+            </button>
+          </div>
         </div>
 
         <div className="checkbox-group">

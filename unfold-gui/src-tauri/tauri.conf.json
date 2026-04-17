@@ -4,29 +4,31 @@
   "version": "0.1.0",
   "identifier": "com.unfold.app",
   "build": {
-    "beforeDevCommand": "",
-    "beforeBuildCommand": "",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
     "devUrl": "http://localhost:5173",
     "frontendDist": "../dist"
   },
   "app": {
     "windows": [
       {
-        "title": "Unfold",
-        "width": 800,
-        "height": 600,
+        "title": "叽里呱啦测试",
+        "width": 900,
+        "height": 700,
         "resizable": true,
         "fullscreen": false
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "capabilities": [
+        "default"
+      ]
     }
   },
   "bundle": {
     "active": true,
     "targets": "all",
     "icon": []
-  },
-  "plugins": {}
+  }
 }
