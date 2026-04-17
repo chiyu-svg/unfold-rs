@@ -69,14 +69,16 @@ function App() {
     addLog('开始执行文件平铺操作...', 'info');
 
     try {
-      const result = await invoke('run', {
+      const params = {
         source: sourceDir,
         dest: targetDir,
         moveFiles,
         dryRun,
         conflict: conflictStrategy,
         cleanup,
-      });
+      }
+      console.log('params++++', params);
+      const result = await invoke('run', { params });
       addLog(result as string, 'success');
     } catch (error) {
       addLog(String(error), 'error');
