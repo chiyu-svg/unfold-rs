@@ -29,3 +29,5 @@ unfold_log.json
 *.d
 # 构建脚本
 step.md
+
+unfold-gui/node_modules
