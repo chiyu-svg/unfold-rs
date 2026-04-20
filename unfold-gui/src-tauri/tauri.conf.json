@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "叽里呱啦测试",
+        "title": "Unfold - 文件平铺工具",
         "width": 900,
         "height": 700,
         "resizable": true,
@@ -28,7 +28,44 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
-    "icon": []
+    "targets": ["msi", "nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "publisher": "unfold",
+    "category": "Utility",
+    "shortDescription": "将嵌套目录中的文件平铺到目标目录",
+    "longDescription": "Unfold 是一个强大的文件管理工具，可以递归遍历源目录，将所有文件移动或复制到目标目录的根层级。支持移动/复制模式、冲突处理、演习模式、空目录清理、撤销操作等功能。",
+    "windows": {
+      "wix": {
+        "language": "zh-CN",
+        "enableElevatedUpdateTask": false
+      },
+      "nsis": {
+        "installMode": "perMachine",
+        "languages": ["SimpChinese"],
+        "displayLanguageSelector": false
+      },
+      "webviewInstallMode": {
+        "type": "embedBootstrapper"
+      }
+    },
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "10.13",
+      "exceptionDomain": ""
+    },
+    "linux": {
+      "deb": {
+        "depends": []
+      },
+      "appimage": {
+        "bundleMediaFramework": false
+      }
+    }
   }
 }
